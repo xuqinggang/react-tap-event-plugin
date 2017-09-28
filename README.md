@@ -16,6 +16,11 @@ Latest:
 $ npm i --save react-tap-event-plugin
 ```
 
+Compatible with React >= 15.4 && < 16.0:
+```sh
+$ npm i --save react-tap-event-plugin@2.0.1
+```
+
 Compatible with React > 0.14 && < 15.4:
 ```sh
 $ npm i --save react-tap-event-plugin@1.0.0
