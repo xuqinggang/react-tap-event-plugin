@@ -3,13 +3,16 @@
   "version": "0.0.1",
   "devDependencies": {
     "browserify": "11.2.0",
+    "envify": "4.1.0",
     "react": "^16.0.0-0",
     "react-dom": "^16.0.0-0",
     "react-tap-event-plugin": "../",
+    "uglifyify": "4.0.4",
     "watchify": "3.9.0"
   },
   "scripts": {
     "build": "browserify src/application.js -o application.js",
+    "dist": "NODE_ENV=production browserify -t envify -g uglifyify src/application.js -o application.js",
     "watch": "watchify src/application.js -o application.js -v"
   },
   "dependencies": {}

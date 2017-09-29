@@ -31,7 +31,7 @@ var shouldBeReleasedProperties = [
   'isDefaultPrevented',
   'isPropagationStopped',
   '_dispatchListeners',
-  '_dispatchInstances',
+  '_dispatchInstances'
 ];
 
 /**
@@ -50,7 +50,7 @@ var EventInterface = {
     return event.timeStamp || Date.now();
   },
   defaultPrevented: null,
-  isTrusted: null,
+  isTrusted: null
 };
 
 /**
@@ -75,7 +75,7 @@ function SyntheticEvent(
   dispatchConfig,
   targetInst,
   nativeEvent,
-  nativeEventTarget,
+  nativeEventTarget
 ) {
   if (__DEV__) {
     // these have a getter/setter for warnings
@@ -182,7 +182,7 @@ Object.assign(SyntheticEvent.prototype, {
         Object.defineProperty(
           this,
           propName,
-          getPooledWarningPropertyDefinition(propName, Interface[propName]),
+          getPooledWarningPropertyDefinition(propName, Interface[propName])
         );
       } else {
         this[propName] = null;
@@ -195,20 +195,20 @@ Object.assign(SyntheticEvent.prototype, {
       Object.defineProperty(
         this,
         'nativeEvent',
-        getPooledWarningPropertyDefinition('nativeEvent', null),
+        getPooledWarningPropertyDefinition('nativeEvent', null)
       );
       Object.defineProperty(
         this,
         'preventDefault',
-        getPooledWarningPropertyDefinition('preventDefault', emptyFunction),
+        getPooledWarningPropertyDefinition('preventDefault', emptyFunction)
       );
       Object.defineProperty(
         this,
         'stopPropagation',
-        getPooledWarningPropertyDefinition('stopPropagation', emptyFunction),
+        getPooledWarningPropertyDefinition('stopPropagation', emptyFunction)
       );
     }
-  },
+  }
 });
 
 SyntheticEvent.Interface = EventInterface;
@@ -259,15 +259,15 @@ if (__DEV__) {
                 "This synthetic event is reused for performance reasons. If you're " +
                   "seeing this, you're adding a new property in the synthetic event object. " +
                   'The property is never released. See ' +
-                  'https://fb.me/react-event-pooling for more information.',
+                  'https://fb.me/react-event-pooling for more information.'
               );
               didWarnForAddedNewProperty = true;
             }
             target[prop] = value;
             return true;
-          },
+          }
         });
-      },
+      }
     });
     /*eslint-enable no-func-assign */
   }
@@ -289,7 +289,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   return {
     configurable: true,
     set: set,
-    get: get,
+    get: get
   };
 
   function set(val) {
@@ -317,7 +317,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
         'See https://fb.me/react-event-pooling for more information.',
       action,
       propName,
-      result,
+      result
     );
   }
 }
@@ -331,7 +331,7 @@ function getPooledEvent(dispatchConfig, targetInst, nativeEvent, nativeInst) {
       dispatchConfig,
       targetInst,
       nativeEvent,
-      nativeInst,
+      nativeInst
     );
     return instance;
   }
@@ -339,7 +339,7 @@ function getPooledEvent(dispatchConfig, targetInst, nativeEvent, nativeInst) {
     dispatchConfig,
     targetInst,
     nativeEvent,
-    nativeInst,
+    nativeInst
   );
 }
 
@@ -347,7 +347,7 @@ function releasePooledEvent(event) {
   var EventConstructor = this;
   invariant(
     event instanceof EventConstructor,
-    'Trying to release an event instance  into a pool of a different type.',
+    'Trying to release an event instance  into a pool of a different type.'
   );
   event.destructor();
   if (EventConstructor.eventPool.length < EVENT_POOL_SIZE) {

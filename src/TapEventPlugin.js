@@ -35,7 +35,7 @@ var startCoords = {x: 0, y: 0};
 
 var Axis = {
   x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
-  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'},
+  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
 };
 
 function getAxisCoordOfEvent(
@@ -54,7 +54,7 @@ function getDistance(coords, nativeEvent) {
   var pageY = getAxisCoordOfEvent(Axis.y, nativeEvent);
   return Math.pow(
     Math.pow(pageX - coords.x, 2) + Math.pow(pageY - coords.y, 2),
-    0.5,
+    0.5
   );
 }
 
@@ -62,21 +62,21 @@ var touchEvents = [
   'topTouchStart',
   'topTouchCancel',
   'topTouchEnd',
-  'topTouchMove',
+  'topTouchMove'
 ];
 
 var dependencies = ['topMouseDown', 'topMouseMove', 'topMouseUp'].concat(
-  touchEvents,
+  touchEvents
 );
 
 var eventTypes = {
   touchTap: {
     phasedRegistrationNames: {
       bubbled: 'onTouchTap',
-      captured: 'onTouchTapCapture',
+      captured: 'onTouchTapCapture'
     },
-    dependencies: dependencies,
-  },
+    dependencies: dependencies
+  }
 };
 
 var usedTouchTime = 0;
@@ -92,7 +92,7 @@ function createTapEventPlugin(shouldRejectClick) {
       topLevelType,
       targetInst,
       nativeEvent,
-      nativeEventTarget,
+      nativeEventTarget
     ) {
       if (!isStartish(topLevelType) && !isEndish(topLevelType)) {
         return null;
@@ -114,7 +114,7 @@ function createTapEventPlugin(shouldRejectClick) {
           eventTypes.touchTap,
           targetInst,
           nativeEvent,
-          nativeEventTarget,
+          nativeEventTarget
         );
       }
       if (isStartish(topLevelType)) {
@@ -126,7 +126,7 @@ function createTapEventPlugin(shouldRejectClick) {
       }
       EventPropagators.accumulateTwoPhaseDispatches(event);
       return event;
-    },
+    }
   };
 }
 
