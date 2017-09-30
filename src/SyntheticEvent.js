@@ -323,9 +323,9 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 }
 
 function getPooledEvent(dispatchConfig, targetInst, nativeEvent, nativeInst) {
-  const EventConstructor = this;
+  var EventConstructor = this;
   if (EventConstructor.eventPool.length) {
-    const instance = EventConstructor.eventPool.pop();
+    var instance = EventConstructor.eventPool.pop();
     EventConstructor.call(
       instance,
       dispatchConfig,
