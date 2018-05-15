@@ -1,5 +1,12 @@
 ## 这个项目完全fork[react-tap-event-plugin](https://github.com/zilverline/react-tap-event-plugin), 但是添加了可以修改tapMoveThreshold的策略,来修复遇到的[问题](https://github.com/xuqinggang/blog/issues/1)
-(发来发现原项目也提了个request解决这个问题，但是还没merge)
+(后来发现原项目也提了个request解决这个问题，但是还没merge)
+
+```js
+var React = require("react");
+var ReactDOM = require("react-dom");
+injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin({ tapMoveThreshold: 5 });
+```
 
 # Introduction
 You've probably heard of [iOS's dreaded 300ms tap delay](http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away).  React's `onClick` attribute falls prey to it.  ~~Facebook's working on a solution in the form of `TapEventPlugin`, but it [won't be made available](https://github.com/facebook/react/issues/436) [until 1.0](https://github.com/facebook/react/pull/1170).~~
