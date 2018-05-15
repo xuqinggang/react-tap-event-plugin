@@ -30,7 +30,6 @@ function isStartish(topLevelType) {
  * Number of pixels that are tolerated in between a `touchStart` and `touchEnd`
  * in order to still be considered a 'tap' event.
  */
-var tapMoveThreshold = 10;
 var startCoords = {x: 0, y: 0};
 
 var Axis = {
@@ -82,7 +81,7 @@ var eventTypes = {
 var usedTouchTime = 0;
 
 // var TapEventPlugin = {
-function createTapEventPlugin(shouldRejectClick) {
+function createTapEventPlugin(shouldRejectClick, tapMoveThreshold) {
   return {
     tapMoveThreshold: tapMoveThreshold,
 
